@@ -15,6 +15,10 @@ namespace PastaOrderSystem.Repository
         }
 
         public IEnumerable<T> GetByFilter(Expression<Func<T, bool>> filter) { return _dbSet.Where(filter).ToList();}
+        public async Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+            return await _dbSet.Where(filter).ToListAsync();
+        }
 
         // Retrieve an entity by its id
         public T GetById(Guid id)
