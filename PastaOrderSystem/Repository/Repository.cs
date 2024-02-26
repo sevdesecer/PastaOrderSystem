@@ -11,40 +11,37 @@ namespace PastaOrderSystem.Repository
         public Repository(DbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            _dbSet = _context.Set<T>();
+            _dbSet = _context.Set<T>(); 
         }
 
-        public IEnumerable<T> GetByFilter(Expression<Func<T, bool>> filter) { return _dbSet.Where(filter).ToList();}
-        public async Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> filter)
-        {
-            return await _dbSet.Where(filter).ToListAsync();
-        }
+        public IEnumerable<T> GetByFilter(Expression<Func<T, bool>> filter) =>
+            _dbSet.Where(filter).ToList();
+        public async Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> filter) =>
+            await _dbSet.Where(filter).ToListAsync() ?? throw new ArgumentNullException("Could not find a record with this query.");
 
-        // Retrieve an entity by its id
-        public T GetById(Guid id)
-        {
-            return _dbSet.Find(id);
-        }
 
-        // Retrieve an entity asynchronously by its id
-        public async Task<T> GetByIdAsync(Guid id)
-        {
-            return await _dbSet.FindAsync(id);
-        }
+        // Retrieves an entity by its id
+        public T GetById(Guid id) =>
+            _dbSet.Find(id) ?? throw new ArgumentNullException("Could not find a record with this id.");
 
-        // Retrieve all entities
+
+        // Retrieves an entity asynchronously by its id
+        public async Task<T> GetByIdAsync(Guid id) =>
+            await _dbSet.FindAsync(id) ?? throw new ArgumentNullException("Could not find a record with this id.");
+
+        // Retrieves all entities
         public IEnumerable<T> GetAll()
         {
             return _dbSet.ToList();
         }
 
-        // Retrieve all entities asynchronously
+        // Retrieves all entities asynchronously
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        // Add an entity
+        // Adds an entity
         public void Add(T entity, bool saveChanges = true)
         {
             _dbSet.Add(entity);
@@ -52,7 +49,7 @@ namespace PastaOrderSystem.Repository
                 _context.SaveChanges();
         }
 
-        // Add an entity asynchronously
+        // Adds an entity asynchronously
         public async Task AddAsync(T entity, bool saveChanges = true)
         {
             await _dbSet.AddAsync(entity);
@@ -76,7 +73,7 @@ namespace PastaOrderSystem.Repository
                 await _context.SaveChangesAsync();
         }
 
-        // Update an entity
+        // Updates an entity
         public void Update(T entity, bool saveChanges = true)
         {
             _context.Update(entity);
@@ -84,7 +81,7 @@ namespace PastaOrderSystem.Repository
                 _context.SaveChanges();
         }
 
-        // Update an entity asynchronously
+        // Updates an entity asynchronously
         public async Task UpdateAsync(T entity, bool saveChanges = true)
         {
             _context.Update(entity);
@@ -108,7 +105,7 @@ namespace PastaOrderSystem.Repository
                 await _context.SaveChangesAsync();
         }
 
-        // Delete an entity
+        // Deletes an entity
         public void Delete(T entity, bool saveChanges = true)
         {
             _dbSet.Remove(entity);
@@ -116,7 +113,7 @@ namespace PastaOrderSystem.Repository
                 _context.SaveChanges();
         }
 
-        // Delete an entity asynchronously
+        // Deletes an entity asynchronously
         public async Task DeleteAsync(T entity, bool saveChanges = true)
         {
             _dbSet.Remove(entity);
@@ -139,5 +136,6 @@ namespace PastaOrderSystem.Repository
             if (saveChanges)
                 await _context.SaveChangesAsync();
         }
+ 
     }
 }

@@ -2,24 +2,26 @@
 
 namespace PastaOrderSystem.Uow
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork(DbContext context) : IUnitOfWork
     {
-        private readonly DbContext _context;
-
-        public UnitOfWork(DbContext context)
-        {
-            _context = context;
-        }
-
         public void SaveChanges()
         {
-            _context.SaveChanges();
+            context.SaveChanges();
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await context.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            _context.Dispose();
+            context.Dispose();
         }
 
+        public void Disposable()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

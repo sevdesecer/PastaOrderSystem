@@ -3,12 +3,8 @@ using PastaOrderSystem.Entity;
 
 namespace PastaOrderSystem.Context
 {
-    public class DataContext : DbContext
+    public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
-        {
-
-        }
         public DbSet<Pasta> Pasta { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<Beverage> Beverage { get; set; }

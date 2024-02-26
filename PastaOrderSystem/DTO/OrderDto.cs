@@ -1,12 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PastaOrderSystem.Entity
+﻿namespace PastaOrderSystem.DTO
 {
-    public class Order
+    public class OrderDto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public required string CustomerName { get; set; }
         public required string CustomerAddress { get; set; }

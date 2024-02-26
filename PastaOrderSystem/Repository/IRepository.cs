@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace PastaOrderSystem.Repository
 {
@@ -9,12 +8,12 @@ namespace PastaOrderSystem.Repository
    
         T GetById(Guid id);
         IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> filter);
         void Add(T entity, bool saveChanges = true);
         void Update(T entity, bool saveChanges = true);
         void Delete(T entity, bool saveChanges = true);
-        Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> filter);
         Task<T> GetByIdAsync(Guid id);
-        Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T entity, bool saveChanges = true);
         void AddRange(IEnumerable<T> entities, bool saveChanges = true);
         Task AddRangeAsync(IEnumerable<T> entities, bool saveChanges = true);
