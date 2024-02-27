@@ -20,8 +20,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-
 var Configuration = builder.Configuration;
 
 builder.Services.AddDbContext<DataContext>(options =>
@@ -44,7 +42,6 @@ var mapperConfig = new MapperConfiguration(cfg =>
 builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
