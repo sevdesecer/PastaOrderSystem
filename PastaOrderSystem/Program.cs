@@ -1,5 +1,4 @@
 using AutoMapper;
-using FluentAssertions.Common;
 using Microsoft.EntityFrameworkCore;
 using PastaOrderSystem.Context;
 using PastaOrderSystem.Mapper;
@@ -12,34 +11,35 @@ using PastaOrderSystem.Service.Order;
 using PastaOrderSystem.Service.Pasta;
 
 var builder = WebApplication.CreateBuilder(args);
+var Services = builder.Services;
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+Services.AddEndpointsApiExplorer();
+Services.AddSwaggerGen();
 
 var Configuration = builder.Configuration;
 
-builder.Services.AddDbContext<DataContext>(options =>
+Services.AddDbContext<DataContext>(options =>
         options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
 // for dependecy injection
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
-builder.Services.AddScoped<IPastaService, PastaService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IJunctionService, JunctionService>();
-builder.Services.AddScoped<IExtraIngredientService, ExtraIngredientService>();
-builder.Services.AddScoped<IBeverageService, BeverageService>();
+Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+Services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
+Services.AddScoped<IPastaService, PastaService>();
+Services.AddScoped<IOrderService, OrderService>();
+Services.AddScoped<IJunctionService, JunctionService>();
+Services.AddScoped<IExtraIngredientService, ExtraIngredientService>();
+Services.AddScoped<IBeverageService, BeverageService>();
 
 var mapperConfig = new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MappingProfile());
 });
 
-builder.Services.AddSingleton(mapperConfig.CreateMapper());
+Services.AddSingleton(mapperConfig.CreateMapper());
 
 var app = builder.Build();
 

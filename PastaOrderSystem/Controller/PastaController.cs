@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PastaOrderSystem.DTO;
-using PastaOrderSystem.Entity;
 using PastaOrderSystem.Service.Pasta;
-
 
 namespace PastaOrderSystem.Controller
 {

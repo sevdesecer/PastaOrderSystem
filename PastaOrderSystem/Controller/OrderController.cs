@@ -36,7 +36,7 @@ namespace PastaOrderSystem.Controller
         [HttpPost("add")]
         public ActionResult Add(OrderDto order)
         {
-            _service.Add(order);
+            _service.AddJunction(order);
             return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
         }
 

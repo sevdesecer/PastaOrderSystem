@@ -40,6 +40,14 @@ namespace PastaOrderSystem.Controller
             return CreatedAtAction(nameof(GetById), new { id = junction.PastaId }, junction);
         }
 
+        [HttpPost("addRange")]
+        public async Task<ActionResult> AddRange(IEnumerable<JunctionDto> junctions)
+        {
+            await _service.AddRangeAsync(junctions);
+            return Ok();
+        }
+
+
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromQuery] Guid id, JunctionDto junction)
         {

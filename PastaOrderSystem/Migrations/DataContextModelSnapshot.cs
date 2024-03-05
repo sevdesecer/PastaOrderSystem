@@ -68,20 +68,26 @@ namespace PastaOrderSystem.Migrations
 
             modelBuilder.Entity("PastaOrderSystem.Entity.Junction", b =>
                 {
-                    b.Property<Guid>("BeverageId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ExtraIngredientId")
+                    b.Property<Guid?>("BeverageId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid?>("ExtraIngredientId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("PastaId")
+                    b.Property<Guid?>("OrderId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("PastaNumber")
+                    b.Property<Guid?>("PastaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("PastaNumber")
                         .HasColumnType("integer");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("BeverageId");
 
@@ -145,27 +151,19 @@ namespace PastaOrderSystem.Migrations
                 {
                     b.HasOne("PastaOrderSystem.Entity.Beverage", "Beverage")
                         .WithMany()
-                        .HasForeignKey("BeverageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BeverageId");
 
                     b.HasOne("PastaOrderSystem.Entity.ExtraIngredient", "ExtraIngredient")
                         .WithMany()
-                        .HasForeignKey("ExtraIngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ExtraIngredientId");
 
                     b.HasOne("PastaOrderSystem.Entity.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("PastaOrderSystem.Entity.Pasta", "Pasta")
                         .WithMany()
-                        .HasForeignKey("PastaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PastaId");
 
                     b.Navigation("Beverage");
 

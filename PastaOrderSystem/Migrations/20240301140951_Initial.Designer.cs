@@ -12,7 +12,7 @@ using PastaOrderSystem.Context;
 namespace PastaOrderSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240222140120_Initial")]
+    [Migration("20240301140951_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -71,20 +71,34 @@ namespace PastaOrderSystem.Migrations
 
             modelBuilder.Entity("PastaOrderSystem.Entity.Junction", b =>
                 {
-                    b.Property<Guid>("BeverageId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ExtraIngredientId")
+                    b.Property<Guid?>("BeverageId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid?>("ExtraIngredientId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("PastaId")
+                    b.Property<Guid?>("OrderId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("PastaNumber")
+                    b.Property<Guid?>("PastaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("PastaNumber")
                         .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BeverageId");
+
+                    b.HasIndex("ExtraIngredientId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("PastaId");
 
                     b.ToTable("Junction");
                 });
@@ -134,6 +148,33 @@ namespace PastaOrderSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pasta");
+                });
+
+            modelBuilder.Entity("PastaOrderSystem.Entity.Junction", b =>
+                {
+                    b.HasOne("PastaOrderSystem.Entity.Beverage", "Beverage")
+                        .WithMany()
+                        .HasForeignKey("BeverageId");
+
+                    b.HasOne("PastaOrderSystem.Entity.ExtraIngredient", "ExtraIngredient")
+                        .WithMany()
+                        .HasForeignKey("ExtraIngredientId");
+
+                    b.HasOne("PastaOrderSystem.Entity.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("PastaOrderSystem.Entity.Pasta", "Pasta")
+                        .WithMany()
+                        .HasForeignKey("PastaId");
+
+                    b.Navigation("Beverage");
+
+                    b.Navigation("ExtraIngredient");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Pasta");
                 });
 #pragma warning restore 612, 618
         }

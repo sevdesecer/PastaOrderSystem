@@ -5,6 +5,6 @@
         void SaveChanges();
         Task SaveChangesAsync();
         void Disposable();
-        
+
     }
 }

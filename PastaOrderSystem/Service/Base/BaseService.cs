@@ -1,58 +1,61 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PastaOrderSystem.Repository;
+using PastaOrderSystem.Uow;
 using System.Linq.Expressions;
 
 namespace PastaOrderSystem.Service.Base
 {
     public class BaseService<TEntity, TDto> : IBaseService<TEntity, TDto> where TEntity : class where TDto : class
     {
-        protected readonly IRepository<TEntity> _repository;
-        protected readonly IMapper _mapper;
-        protected readonly DbContext _context;
+        protected readonly IRepository<TEntity> repository;
+        protected readonly IMapper mapper;
+        protected readonly DbContext context;
+        protected readonly IUnitOfWork unitOfWork; 
 
         public BaseService(IMapper mapper, DbContext context)
         {
-            _repository = new Repository<TEntity>(context);
-            _mapper = mapper;
-            _context = context;
+            repository = new Repository<TEntity>(context);
+            this.mapper = mapper;
+            this.context = context;
+            unitOfWork = new UnitOfWork(context);
         }
         public IEnumerable<TDto> GetAll() =>
-            _mapper.Map<IEnumerable<TDto>>(_repository.GetAll());
+            mapper.Map<IEnumerable<TDto>>(repository.GetAll());
         public async Task<IEnumerable<TDto>> GetAllAsync() =>
-            _mapper.Map<IEnumerable<TDto>>(await _repository.GetAllAsync());
+            mapper.Map<IEnumerable<TDto>>(await repository.GetAllAsync());
         public IEnumerable<TDto> GetByFilter(Expression<Func<TEntity, bool>> filter) =>
-            _mapper.Map<IEnumerable<TDto>>(_repository.GetByFilter(filter));
+            mapper.Map<IEnumerable<TDto>>(repository.GetByFilter(filter));
         public async Task<IEnumerable<TDto>> GetByFilterAsync(Expression<Func<TEntity, bool>> filter) =>
-           _mapper.Map<IEnumerable<TDto>>(await _repository.GetByFilterAsync(filter));
+           mapper.Map<IEnumerable<TDto>>(await repository.GetByFilterAsync(filter));
         public TDto GetById(Guid id) =>
-           _mapper.Map<TDto>(_repository.GetById(id));
+           mapper.Map<TDto>(repository.GetById(id));
         public async Task<TDto> GetByIdAsync(Guid id) =>
-            _mapper.Map<TDto>(await _repository.GetByIdAsync(id));
+            mapper.Map<TDto>(await repository.GetByIdAsync(id));
         public void Add(TDto dto, bool saveChanges = true) =>
-            _repository.Add(_mapper.Map<TEntity>(dto), saveChanges);
+            repository.Add(mapper.Map<TEntity>(dto), saveChanges);
         public void AddRange(IEnumerable<TDto> dtos, bool saveChanges = true) =>
-            _repository.AddRange(_mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
+            repository.AddRange(mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
         public async Task AddAsync(TDto dto, bool saveChanges = true) =>
-            await _repository.AddAsync(_mapper.Map<TEntity>(dto), saveChanges);
+            await repository.AddAsync(mapper.Map<TEntity>(dto), saveChanges);
         public async Task AddRangeAsync(IEnumerable<TDto> dtos, bool saveChanges = true) =>
-            await _repository.AddRangeAsync(_mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
+            await repository.AddRangeAsync(mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
         public void Update(TDto dto, bool saveChanges = true) =>
-            _repository.Update(_mapper.Map<TEntity>(dto), saveChanges);
+            repository.Update(mapper.Map<TEntity>(dto), saveChanges);
         public void UpdateRange(IEnumerable<TDto> dtos, bool saveChanges = true) =>
-            _repository.UpdateRange(_mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
+            repository.UpdateRange(mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
         public async Task UpdateAsync(TDto dto, bool saveChanges = true) =>
-            await _repository.UpdateAsync(_mapper.Map<TEntity>(dto), saveChanges);
+            await repository.UpdateAsync(mapper.Map<TEntity>(dto), saveChanges);
         public async Task UpdateRangeAsync(IEnumerable<TDto> dtos, bool saveChanges = true) =>
-            await _repository.UpdateRangeAsync(_mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
+            await repository.UpdateRangeAsync(mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
         public void Delete(TDto dto, bool saveChanges = true) =>
-            _repository.Delete(_mapper.Map<TEntity>(dto), saveChanges);
+            repository.Delete(mapper.Map<TEntity>(dto), saveChanges);
         public void DeleteRange(IEnumerable<TDto> dtos, bool saveChanges = true) =>
-            _repository.DeleteRange(_mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
+            repository.DeleteRange(mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
         public async Task DeleteAsync(TDto dto, bool saveChanges = true) =>
-            await _repository.DeleteAsync(_mapper.Map<TEntity>(dto), saveChanges);
+            await repository.DeleteAsync(mapper.Map<TEntity>(dto), saveChanges);
         public async Task DeleteRangeAsync(IEnumerable<TDto> dtos, bool saveChanges = true) =>
-            await _repository.DeleteRangeAsync(_mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
+            await repository.DeleteRangeAsync(mapper.Map<IEnumerable<TEntity>>(dtos), saveChanges);
     }
 }
 
