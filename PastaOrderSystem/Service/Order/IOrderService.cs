@@ -5,6 +5,6 @@ namespace PastaOrderSystem.Service.Order
 {
     public interface IOrderService : IBaseService<Entity.Order, OrderDto>
     {
-        void AddJunction(OrderDto orderDto);
+        void AddJunction(OrderDto model);
     }
 }
