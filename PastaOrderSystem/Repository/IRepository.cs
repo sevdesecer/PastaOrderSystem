@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace PastaOrderSystem.Repository
+namespace WebApi.Repository
 {
     public interface IRepository<T>
     {

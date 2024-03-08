@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PastaOrderSystem.DTO;
-using PastaOrderSystem.Service.Junction;
+using WebApi.DTO;
+using WebApi.Service.Junction;
 
-namespace PastaOrderSystem.Controller
+namespace WebApi.Controller
 {
     [Route("[controller]")]
     [ApiController]
@@ -14,6 +14,13 @@ namespace PastaOrderSystem.Controller
         {
             _service = service ?? throw new ArgumentNullException(nameof(service));
         }
+
+        //[HttpGet("getTest")]
+        //public ActionResult<IEnumerable<JunctionDto>> GetByOrderId([FromQuery] Guid orderId)
+        //{
+        //  var tester = _service.GetByOrderId(orderId);
+        //return Ok(tester);
+        //}
 
         [HttpGet("getAll")]
         public ActionResult<IEnumerable<JunctionDto>> GetAll()

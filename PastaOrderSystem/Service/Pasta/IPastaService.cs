@@ -1,7 +1,7 @@
-﻿using PastaOrderSystem.DTO;
-using PastaOrderSystem.Service.Base;
+﻿using WebApi.DTO;
+using WebApi.Service.Base;
 
-namespace PastaOrderSystem.Service.Pasta
+namespace WebApi.Service.Pasta
 {
     public interface IPastaService : IBaseService<Entity.Pasta, PastaDto>
     {

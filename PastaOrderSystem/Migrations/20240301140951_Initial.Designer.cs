@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using PastaOrderSystem.Context;
+using WebApi.Context;
 
 #nullable disable
 
-namespace PastaOrderSystem.Migrations
+namespace WebApi.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20240301140951_Initial")]

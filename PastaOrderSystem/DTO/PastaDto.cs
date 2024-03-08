@@ -1,4 +1,4 @@
-﻿namespace PastaOrderSystem.DTO
+﻿namespace WebApi.DTO
 {
     public class PastaDto
     {
@@ -7,5 +7,6 @@
         public string? Description { get; set; }
         public int? Price { get; set; }
         public List<ExtraIngredientDto>? ExtraIngredients { get; set;}
+        public int Number { get; set; }
     }
 }

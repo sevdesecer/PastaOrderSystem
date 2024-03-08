@@ -1,14 +1,14 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using PastaOrderSystem.Context;
-using PastaOrderSystem.Mapper;
-using PastaOrderSystem.Repository;
-using PastaOrderSystem.Service.Base;
-using PastaOrderSystem.Service.Beverage;
-using PastaOrderSystem.Service.ExtraIngredient;
-using PastaOrderSystem.Service.Junction;
-using PastaOrderSystem.Service.Order;
-using PastaOrderSystem.Service.Pasta;
+using WebApi.Context;
+using WebApi.Mapper;
+using WebApi.Repository;
+using WebApi.Service.Base;
+using WebApi.Service.Beverage;
+using WebApi.Service.ExtraIngredient;
+using WebApi.Service.Junction;
+using WebApi.Service.Order;
+using WebApi.Service.Pasta;
 
 var builder = WebApplication.CreateBuilder(args);
 var Services = builder.Services;

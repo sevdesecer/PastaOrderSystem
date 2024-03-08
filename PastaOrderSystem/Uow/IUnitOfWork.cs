@@ -1,4 +1,4 @@
-﻿namespace PastaOrderSystem.Uow
+﻿namespace WebApi.Uow
 {
     public interface IUnitOfWork : IDisposable
     {

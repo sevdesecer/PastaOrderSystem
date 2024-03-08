@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using PastaOrderSystem.Repository;
-using PastaOrderSystem.Uow;
+using WebApi.Repository;
+using WebApi.Uow;
 using System.Linq.Expressions;
 
-namespace PastaOrderSystem.Service.Base
+namespace WebApi.Service.Base
 {
     public class BaseService<TEntity, TDto> : IBaseService<TEntity, TDto> where TEntity : class where TDto : class
     {

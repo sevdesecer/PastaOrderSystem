@@ -1,9 +1,10 @@
-﻿using PastaOrderSystem.DTO;
-using PastaOrderSystem.Service.Base;
+﻿using WebApi.DTO;
+using WebApi.Service.Base;
 
-namespace PastaOrderSystem.Service.Junction
+namespace WebApi.Service.Junction
 {
     public interface IJunctionService : IBaseService<Entity.Junction, JunctionDto>
     {
+        IEnumerable<JunctionDto> GetByOrderId(Guid orderId);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace PastaOrderSystem.Uow
+namespace WebApi.Uow
 {
     public class UnitOfWork(DbContext context) : IUnitOfWork
     {

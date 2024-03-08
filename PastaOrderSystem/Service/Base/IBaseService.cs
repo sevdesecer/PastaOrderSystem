@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace PastaOrderSystem.Service.Base
+namespace WebApi.Service.Base
 {
     public interface IBaseService<TEntity, TDto> where TEntity : class where TDto : class
     {

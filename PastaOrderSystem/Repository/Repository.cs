@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace PastaOrderSystem.Repository
+namespace WebApi.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {

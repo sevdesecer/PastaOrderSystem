@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using PastaOrderSystem.DTO;
-using PastaOrderSystem.Entity;
+using WebApi.DTO;
+using WebApi.Entity;
 
 
-namespace PastaOrderSystem.Mapper
+namespace WebApi.Mapper
 {
     public class MappingProfile : Profile
     {

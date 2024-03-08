@@ -1,4 +1,4 @@
-﻿namespace PastaOrderSystem.DTO
+﻿namespace WebApi.DTO
 {
     public class OrderDto
     {

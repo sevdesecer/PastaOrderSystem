@@ -1,10 +1,10 @@
-﻿using PastaOrderSystem.DTO;
-using PastaOrderSystem.Service.Base;
+﻿using WebApi.DTO;
+using WebApi.Service.Base;
 
-namespace PastaOrderSystem.Service.Order
+namespace WebApi.Service.Order
 {
     public interface IOrderService : IBaseService<Entity.Order, OrderDto>
     {
-        void AddJunction(OrderDto model);
+        Task AddJunction(OrderDto model);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PastaOrderSystem.Entity
+namespace WebApi.Entity
 {
     public class Order
     {
@@ -12,5 +12,7 @@ namespace PastaOrderSystem.Entity
         public required string CustomerAddress { get; set; }
         public int TotalPrice { get; set; }
         public DateTime DateTime { get; set; }
+
+        
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PastaOrderSystem.Entity;
+using WebApi.Entity;
 
-namespace PastaOrderSystem.Context
+namespace WebApi.Context
 {
     public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
     {

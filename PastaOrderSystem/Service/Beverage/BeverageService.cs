@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using PastaOrderSystem.Context;
-using PastaOrderSystem.DTO;
-using PastaOrderSystem.Service.Base;
+using WebApi.Context;
+using WebApi.DTO;
+using WebApi.Service.Base;
 
-namespace PastaOrderSystem.Service.Beverage
+namespace WebApi.Service.Beverage
 {
     public class BeverageService(IMapper mapper, DataContext context) : BaseService<Entity.Beverage, BeverageDto>(mapper, context), IBeverageService
     {

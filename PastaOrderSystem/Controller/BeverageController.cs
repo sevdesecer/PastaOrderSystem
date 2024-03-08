@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PastaOrderSystem.DTO;
-using PastaOrderSystem.Service.Beverage;
+using WebApi.DTO;
+using WebApi.Service.Beverage;
 
-namespace PastaOrderSystem.Controller
+namespace WebApi.Controller
 {
     [Route("[controller]")]
     [ApiController]
