@@ -15,13 +15,6 @@ namespace WebApi.Controller
             _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
-        //[HttpGet("getTest")]
-        //public ActionResult<IEnumerable<JunctionDto>> GetByOrderId([FromQuery] Guid orderId)
-        //{
-        //  var tester = _service.GetByOrderId(orderId);
-        //return Ok(tester);
-        //}
-
         [HttpGet("getAll")]
         public ActionResult<IEnumerable<JunctionDto>> GetAll()
         {

@@ -32,6 +32,19 @@ namespace WebApi.Controller
             }
             return Ok(order);
         }
+        
+        [HttpGet("getWithJunction")]
+        public async Task<ActionResult<OrderDto>> GetWithJunction([FromQuery] Guid orderId)
+        {
+            var order = _service.GetWithJunction(orderId);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            return Ok(order);
+        }
+
+
 
         [HttpPost("add")]
         public ActionResult Add(OrderDto order)

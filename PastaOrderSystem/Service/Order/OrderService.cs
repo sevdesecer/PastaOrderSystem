@@ -141,63 +141,60 @@ namespace WebApi.Service.Order
             return totalPrice;
         }
 
-        public OrderDto GetOrderWithJunction(Guid orderId)
+        public OrderDto GetWithJunction(Guid orderId)
         {
             var junctionList = junctionService.GetByOrderId(orderId);
-            var firstJunction = junctionList.First();
+
+            if (junctionList == null || !junctionList.Any())
+            {
+                return new OrderDto
+                {
+                    CustomerName = "",
+                    CustomerAddress = ""
+                };
+                    
+            }
 
             var order = new OrderDto
             {
-                CustomerName = firstJunction.Order.CustomerName,
-                CustomerAddress = firstJunction.Order.CustomerAddress
+                Id = junctionList.First().Order.Id,
+                CustomerName = junctionList.First().Order.CustomerName,
+                CustomerAddress = junctionList.First().Order.CustomerAddress,
+                TotalPrice = junctionList.First().Order.TotalPrice,
+                DateTime = junctionList.First().Order.DateTime,
+                Pastas = [],
+                Beverages = []
             };
-
-            var pastaIdList = new List<Guid>();
 
             if (junctionList.Any())
             {
 
                 foreach (var junction in junctionList)
                 {
-                    if (junction.PastaId != null && !pastaIdList.Contains(junction.PastaId.Value))
-                        pastaIdList.Add(junction.PastaId.Value);
+                    if (junction.PastaId != null && !order.Pastas.Exists(p => p.Id == junction.PastaId && p.Number == junction.PastaNumber))
+                    {
+                        junction.Pasta.ExtraIngredients = [];
+                        junction.Pasta.Number = junction.PastaNumber.Value;
+                        order.Pastas.Add(junction.Pasta);
+                    }
 
                     if (junction.BeverageId != null)
                     {
                         order.Beverages.Add(new BeverageDto
                         {
                             Id = junction.BeverageId.Value,
-                            Name = junction.Pasta.Name,
-                            Description = junction.Pasta.Description,
-                            Price = junction.Pasta.Price
+                            Name = junction.Beverage.Name,
+                            Description = junction.Beverage.Description,
+                            Price = junction.Beverage.Price
                         });
                     }
-                }
 
-                foreach (var pastaId in pastaIdList)
-                {
-                    var pastaDto = new PastaDto { Id = pastaId };
-                    var extraIngredientIds = new List<Guid>();
-
-                    foreach (var junction in junctionList)
-                    {
-                        if (junction.PastaId == pastaId && junction.ExtraIngredientId != null &&
-                            !extraIngredientIds.Contains(junction.ExtraIngredientId.Value))
-                        {
-                            extraIngredientIds.Add(junction.ExtraIngredientId.Value);
-                        }
-                    }
-
-                    pastaDto.ExtraIngredients = extraIngredientIds.Select(extraIngredientId =>
-                        new ExtraIngredientDto { Id = extraIngredientId }).ToList();
-
-                    order.Pastas.Add(pastaDto);
+                    if (junction.ExtraIngredientId != null && order.Pastas.Exists(p => p.Id == junction.PastaId && p.Number == junction.PastaNumber))
+                        order.Pastas.Find(p => p.Id == junction.PastaId && p.Number == junction.PastaNumber).ExtraIngredients.Add(junction.ExtraIngredient);
                 }
             }
-
             return order;
         }
-
     }
 }
    
