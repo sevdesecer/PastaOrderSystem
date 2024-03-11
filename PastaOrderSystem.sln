@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "PastaOrderSystem\WebApi.csproj", "{CA50B0B7-3F04-4639-ADF8-89812CF5DD19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC", "PastaSystem\MVC.csproj", "{65C1C660-CAEE-452B-B900-18EA0E2ECD27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{2AF33091-1B5B-44C9-A6D5-2316C087B55D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{CA50B0B7-3F04-4639-ADF8-89812CF5DD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA50B0B7-3F04-4639-ADF8-89812CF5DD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA50B0B7-3F04-4639-ADF8-89812CF5DD19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65C1C660-CAEE-452B-B900-18EA0E2ECD27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65C1C660-CAEE-452B-B900-18EA0E2ECD27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65C1C660-CAEE-452B-B900-18EA0E2ECD27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65C1C660-CAEE-452B-B900-18EA0E2ECD27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF33091-1B5B-44C9-A6D5-2316C087B55D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF33091-1B5B-44C9-A6D5-2316C087B55D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF33091-1B5B-44C9-A6D5-2316C087B55D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF33091-1B5B-44C9-A6D5-2316C087B55D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

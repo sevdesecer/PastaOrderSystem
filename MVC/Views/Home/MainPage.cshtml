@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "MainPage";
+}
+
+    <style>
+   
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+        }
+
+        .container::before,
+        .container::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                width: 20px; 
+                height: 100%;
+                background-color: #800000; 
+                z-index: -1;
+        }
+
+        .container::before {
+                left: 0; 
+        }
+
+        .container::after {
+                right: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #800000;
+            margin-bottom: 20px;
+        }
+    </style>
+
+<body>
+    <div class="container">
+        <img src="/Images/PastaVilla/PastaVilla.jpeg" alt="PastaVilla Logo">
+        <div>
+            <br />
+            <p>Welcome to PastaVilla, where each dish shares a tale of tradition, flavor, and passion. Step into our cozy Italian-style retreat and embark on a culinary journey through the heart of Istanbul. From the enticing scent of freshly baked bread to the luxurious sauces that embrace every strand of pasta, each bite at PastaVilla is a tribute to genuine Italian cuisine.</p>
+            <p>Savor our handmade pasta creations, each meticulously prepared using cherished recipes passed down through generations. Whether you yearn for the familiar comfort of spaghetti alla carbonara or the bold flavors of our renowned lasagna, our menu is a harmony of tastes and sensations that will transport you directly to the streets of Rome, Florence, and Naples.</p>
+            <p>At PastaVilla, we believe in more than simply serving meals; we believe in crafting memories. Whether you're enjoying an intimate dinner for two or gathering with loved ones for a joyful feast, our warm welcome and inviting ambiance guarantee that every visit to PastaVilla is an occasion to treasure.</p>
+            <p>Join us at PastaVilla, where every dish is a celebration of la dolce vita—the sweet life.</p>
+        </div>
+    </div>
+</body>
+

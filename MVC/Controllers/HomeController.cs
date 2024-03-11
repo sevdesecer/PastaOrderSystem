@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using PastaSystem.Models;
+using MVC.Models;
 using System.Diagnostics;
 
-namespace PastaSystem.Controllers
+namespace MVC.Controllers
 {
     public class HomeController : Controller
     {
@@ -21,6 +21,11 @@ namespace PastaSystem.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult MainPage() 
+        {
+            return View();  
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
