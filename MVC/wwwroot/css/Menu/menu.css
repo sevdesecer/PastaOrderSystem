@@ -1,0 +1,83 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.menu-card {
+    width: calc(100% - 40px);
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-cart {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .add-to-cart:hover {
+        background-color: #218838;
+    }
+
+.container {
+    padding-top: 100px;
+}
+
+.menu-card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.menu-card p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.menu-card .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.menu-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.extras {
+    margin-top: 10px;
+}
+
+
+    .extras h4 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .extras div {
+        margin-bottom: 5px;
+    }
+
+    .extras input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .extras label {
+        font-size: 14px;
+        color: #666;
+    }

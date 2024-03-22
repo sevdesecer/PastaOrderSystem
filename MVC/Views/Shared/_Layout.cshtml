@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MVC.styles.css" asp-append-version="true" />
-    <style>
-        
-    </style>
-    
+      <style>
+          .navbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top:0;
+            width: 100%;
+            z-index: 1000;
+        }
+      </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3>
             <div class="container-fluid">
                 <img src="/Images/PastaVilla/PastaVillaLogo.jpeg" alt="PastaVilla Logo" class="navbar-brand" style="max-height: 90px; margin-right: 40px;">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="MainPage">PastaVilla</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PastaVilla</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,10 +31,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Menu</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Index">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Order</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Order</a>
                         </li>
                     </ul>
                 </div>

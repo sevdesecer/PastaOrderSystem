@@ -11,7 +11,10 @@ using WebApi.Service.Order;
 using WebApi.Service.Pasta;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("https://localhost:44360");
 var Services = builder.Services;
+
+
 
 // Add services to the container.
 

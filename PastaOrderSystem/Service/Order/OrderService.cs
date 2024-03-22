@@ -185,7 +185,8 @@ namespace WebApi.Service.Order
                             Id = junction.BeverageId.Value,
                             Name = junction.Beverage.Name,
                             Description = junction.Beverage.Description,
-                            Price = junction.Beverage.Price
+                            Price = junction.Beverage.Price,
+                            ImagePath = junction.Beverage.ImagePath
                         });
                     }
 
