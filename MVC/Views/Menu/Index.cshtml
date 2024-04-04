@@ -1,49 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Menu";
-}
-@model MVC.Models.Menu.MenuViewModel;
-<link rel="stylesheet" href="css/Menu/menu.css">
-<script src="script/Menu/menu.js"></script>
-
-
-<div class="text-center">
-
-    @foreach (var pasta in Model.Pastas)
-    {
-        <div class="menu-card">
-            <a href="@pasta.ImagePath">
-                <img src="@pasta.ImagePath"/>
-            </a>
-            <h2>@pasta.Name</h2>
-            <p>@pasta.Description</p>
-            <p class="price">@pasta.Price</p>
-            <button class="btn btn-primary add-to-cart">Add to cart</button>
-            <button class="btn btn-primary show">Show extra tastes</button>
-
-            <div class="extras" style=" display: none;">
-                @foreach (var extraIngredient in Model.ExtraIngredients)
-                {
-                    <div>
-                        <input type="checkbox" id="@($"extra_{extraIngredient.Id}")" name="@($"extra_{extraIngredient.Id}")">
-                        <label for="@($"extra_{extraIngredient.Id}")">@extraIngredient.Name - @extraIngredient.Price</label>
-                    </div>
-                }
-            </div>
-        </div>
-    }
-
-    @foreach (var beverage in Model.Beverages)
-    {
-        <div class="menu-card">
-            <a href="@beverage.ImagePath">
-                <img src="@beverage.ImagePath" />
-            </a>
-            <h2>@beverage.Name</h2>
-            <p>@beverage.Description</p>
-            <p class="price">@beverage.Price</p>
-            <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-    }
-
+﻿<link rel="stylesheet" href="css/Menu/index.css">
+<div id="menu">
+    <div id="menu-partial">
+        @Html.Partial("_Menu")
+    </div>
+    <div>
+        @Html.Partial("_Cart")
+    </div>
 </div>
-

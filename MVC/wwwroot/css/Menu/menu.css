@@ -1,83 +1,87 @@
-﻿body {
+﻿* {
     margin: 0;
     padding: 0;
-    font-family: "Lucida Console", "Courier New", monospace;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
 }
 
 .text-center {
     text-align: center;
-    margin-top: 20px;
 }
 
 .menu-card {
-    width: calc(100% - 40px);
-    margin: 20px auto;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.add-to-cart {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    font-size: 16px;
+    display: inline-block;
+    margin: 2.5em 0.75em 0em 0.75em;
+    padding: 1.25em;
+    border: 0.0625em solid #ddd;
+    border-radius: 0.3125em;
+    background-color: #fff;
+    text-align: left;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-    .add-to-cart:hover {
-        background-color: #218838;
+    .menu-card:hover {
+        box-shadow: 0 0 0.3125em rgba(0, 0, 0, 0.1);
     }
 
-.container {
-    padding-top: 100px;
-}
+    .menu-card img {
+        width: 100%;
+        border-radius: 0.3125em;
+    }
 
-.menu-card h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
+    .menu-card h2 {
+        font-size: 1.25em;
+        font-weight: bold;
+        margin: 0.625em 0;
+        color: #333;
+    }
 
-.menu-card p {
-    font-size: 16px;
-    margin-bottom: 8px;
-}
+    .menu-card p {
+        font-size: 1em;
+        margin: 0.3125em 0;
+        color: #888;
+    }
 
-.menu-card .price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #007bff;
-}
+    .menu-card .price {
+        font-weight: bold;
+        color: #007bff;
+    }
 
-.menu-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
+    .menu-card button {
+        margin-top: 0.625em;
+        padding: 0.625em 1.25em;
+        border: none;
+        border-radius: 0.3125em;
+        cursor: pointer;
+    }
+
+        .menu-card button.add-to-cart {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .menu-card button.show {
+            background-color: #ddd;
+            color: #333;
+        }
 
 .extras {
-    margin-top: 10px;
+    margin-top: 0.625em;
+    padding: 0.625em;
+    border: 0.0625em solid #ddd;
+    border-radius: 0.3125em;
+    background-color: #f5f5f5;
+    display: none;
 }
 
-
-    .extras h4 {
-        font-size: 18px;
-        margin-bottom: 8px;
-    }
-
-    .extras div {
-        margin-bottom: 5px;
+    .extras label {
+        display: block;
+        margin-bottom: 0.3125em;
     }
 
     .extras input[type="checkbox"] {
-        margin-right: 5px;
-    }
-
-    .extras label {
-        font-size: 14px;
-        color: #666;
+        margin-right: 0.3125em;
     }
