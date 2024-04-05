@@ -11,8 +11,9 @@
 
 #menu-partial {
     overflow-y: auto;
-    max-height: 775px;
+    height: 48.9375em;
     margin-bottom: 40px;
     margin-top: 40px;
-    border: solid 10px black;
+    border: 0.3625em solid #6DA5C0;
+    border-radius: 0.3125em;
 }
