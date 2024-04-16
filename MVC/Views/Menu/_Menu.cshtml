@@ -3,7 +3,8 @@
 }
 @model MVC.Models.Menu.MenuViewModel;
 <link rel="stylesheet" href="css/Menu/menu.css">
-<script src="script/Menu/menu.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/menu.js"></script>
 
 <div class="text-center">
 
@@ -16,7 +17,7 @@
             <h2>@pasta.Name</h2>
             <p>@pasta.Description</p>
             <p class="price">@pasta.Price</p>
-            <button class="btn btn-primary add-to-cart">Add to cart</button>
+            <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price')">Add to cart</button>
             <button class="btn btn-primary show">Show extra tastes</button>
 
             <div class="extras" style=" display: none;">
@@ -40,7 +41,7 @@
             <h2>@beverage.Name</h2>
             <p>@beverage.Description</p>
             <p class="price">@beverage.Price</p>
-            <button class="btn btn-primary add-to-cart">Add to cart</button>
+            <button class="btn btn-primary add-to-cart" onclick="addToCart('@beverage.Id', '@beverage.Name', '@beverage.Price')">Add to cart</button>
         </div>
     }
 
