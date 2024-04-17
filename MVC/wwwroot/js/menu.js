@@ -1,11 +1,15 @@
-function addToCart(productId, productName, productPrice) {
+﻿function addToCart(productId, productName, productPrice, extraIngredientPrices) {
     var cartItemsContainer = $('.cart-items');
+
+    var totalPrice = parseFloat(productPrice);
+    extraIngredientPrices.forEach(function (extraPrice) {
+        totalPrice += parseFloat(extraPrice);
+    });
 
     var productHtml = `
         <div class="cart-item">
             <div>
-                <p>${productName}</p>
-                <p>${productPrice}$</p>
+                <p>${productName} ${totalPrice.toFixed(2)}$</p>
             </div>
         </div>
     `;
@@ -13,8 +17,9 @@ function addToCart(productId, productName, productPrice) {
     console.log("Product HTML:", productHtml);
 
     cartItemsContainer.append(productHtml);
-    updateTotalPrice(productPrice);
+    updateTotalPrice(totalPrice);
 }
+
 
 function updateTotalPrice(price) {
     var totalPriceElement = $('.total-price span');
@@ -30,3 +35,15 @@ function updateTotalPrice(price) {
 
     $('.checkout-btn').prop('disabled', false);
 }
+
+function getSelectedExtraIngredientPrices() {
+    var selectedExtraPrices = [];
+    $('.extras input[type=checkbox]:checked').each(function () {
+        var extraPrice = parseFloat($(this).next('label').text().split(' - ')[1]);
+        selectedExtraPrices.push(extraPrice);
+    });
+    return selectedExtraPrices;
+}
+
+
+
