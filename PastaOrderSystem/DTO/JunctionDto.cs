@@ -12,6 +12,5 @@
         public BeverageDto? Beverage { get; set; }
         public OrderDto? Order { get; set; }
         public ExtraIngredientDto? ExtraIngredient { get; set; }
-
     }
 }

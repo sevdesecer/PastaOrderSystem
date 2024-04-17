@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Linq.Expressions;
 using WebApi.Context;
 using WebApi.DTO;
 using WebApi.Service.Base;
@@ -6,7 +7,6 @@ using WebApi.Service.Beverage;
 using WebApi.Service.ExtraIngredient;
 using WebApi.Service.Junction;
 using WebApi.Service.Pasta;
-using System.Linq.Expressions;
 
 namespace WebApi.Service.Order
 {
@@ -47,12 +47,11 @@ namespace WebApi.Service.Order
 
             if (model.Beverages is not null && model.Beverages.Count is not 0)
             {
-                foreach(var beverageFromUser in model.Beverages)
+                foreach (var beverageFromUser in model.Beverages)
                 {
                     var beverageFromDb = beverageService.GetById(beverageFromUser.Id);
                     order.Beverages.Add(beverageFromDb);
                 }
-                
             }
 
             var orderId = Guid.NewGuid();
@@ -112,8 +111,8 @@ namespace WebApi.Service.Order
             await AddAsync(order, false).ConfigureAwait(false);
             await junctionService.AddRangeAsync(junctions, false).ConfigureAwait(false);
             await unitOfWork.SaveChangesAsync().ConfigureAwait(false);
-        }  
-       
+        }
+
         private static int CalculateTotalPrice(OrderDto orderDto)
         {
             var totalPrice = 0;
@@ -123,7 +122,8 @@ namespace WebApi.Service.Order
                 {
                     totalPrice += pasta.Price ?? 0;
 
-                    if (pasta.ExtraIngredients is not null && pasta.ExtraIngredients.Count is not 0) {
+                    if (pasta.ExtraIngredients is not null && pasta.ExtraIngredients.Count is not 0)
+                    {
                         foreach (var extraIngredient in pasta.ExtraIngredients)
                         {
                             totalPrice += extraIngredient.Price ?? 0;
@@ -131,7 +131,7 @@ namespace WebApi.Service.Order
                     }
                 }
             }
-            if(orderDto.Beverages is not null && orderDto.Beverages.Count is not 0)
+            if (orderDto.Beverages is not null && orderDto.Beverages.Count is not 0)
             {
                 foreach (var beverage in orderDto.Beverages)
                 {
@@ -152,7 +152,6 @@ namespace WebApi.Service.Order
                     CustomerName = "",
                     CustomerAddress = ""
                 };
-                    
             }
 
             var order = new OrderDto
@@ -168,7 +167,6 @@ namespace WebApi.Service.Order
 
             if (junctionList.Any())
             {
-
                 foreach (var junction in junctionList)
                 {
                     if (junction.PastaId != null && !order.Pastas.Exists(p => p.Id == junction.PastaId && p.Number == junction.PastaNumber))
@@ -198,5 +196,3 @@ namespace WebApi.Service.Order
         }
     }
 }
-   
-

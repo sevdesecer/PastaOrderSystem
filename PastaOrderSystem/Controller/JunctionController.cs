@@ -47,7 +47,6 @@ namespace WebApi.Controller
             return Ok();
         }
 
-
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromQuery] Guid id, JunctionDto junction)
         {

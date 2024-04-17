@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Context;
 using WebApi.DTO;
 using WebApi.Service.Base;
-using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Service.Junction
 {

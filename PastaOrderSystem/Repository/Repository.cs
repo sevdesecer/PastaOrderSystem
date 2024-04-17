@@ -11,19 +11,18 @@ namespace WebApi.Repository
         public Repository(DbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            _dbSet = _context.Set<T>(); 
+            _dbSet = _context.Set<T>();
         }
 
         public IEnumerable<T> GetByFilter(Expression<Func<T, bool>> filter) =>
             _dbSet.Where(filter).ToList();
+
         public async Task<IEnumerable<T>> GetByFilterAsync(Expression<Func<T, bool>> filter) =>
             await _dbSet.Where(filter).ToListAsync() ?? throw new ArgumentNullException("Could not find a record with this query.");
-
 
         // Retrieves an entity by its id
         public T GetById(Guid id) =>
             _dbSet.Find(id) ?? throw new ArgumentNullException("Could not find a record with this id.");
-
 
         // Retrieves an entity asynchronously by its id
         public async Task<T> GetByIdAsync(Guid id) =>
@@ -136,6 +135,5 @@ namespace WebApi.Repository
             if (saveChanges)
                 await _context.SaveChangesAsync();
         }
- 
     }
 }

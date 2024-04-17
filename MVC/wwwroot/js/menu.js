@@ -1,8 +1,8 @@
-﻿function addToCart(productId, productName, productPrice, extraIngredientPrices) {
+﻿function addToCart(productId, productName, productPrice) {
     var cartItemsContainer = $('.cart-items');
 
     var totalPrice = parseFloat(productPrice);
-    extraIngredientPrices.forEach(function (extraPrice) {
+    getSelectedExtraIngredientPrices(productId).forEach(function (extraPrice) {
         totalPrice += parseFloat(extraPrice);
     });
 
@@ -20,7 +20,6 @@
     updateTotalPrice(totalPrice);
 }
 
-
 function updateTotalPrice(price) {
     var totalPriceElement = $('.total-price span');
 
@@ -36,14 +35,16 @@ function updateTotalPrice(price) {
     $('.checkout-btn').prop('disabled', false);
 }
 
-function getSelectedExtraIngredientPrices() {
-    var selectedExtraPrices = [];
-    $('.extras input[type=checkbox]:checked').each(function () {
+function getSelectedExtraIngredientPrices(productId) {
+    let selectedExtraPrices = [];
+    const extras = $('#' + productId + ' .extras input[type=checkbox]:checked');
+
+    extras.each(function () {
         var extraPrice = parseFloat($(this).next('label').text().split(' - ')[1]);
         selectedExtraPrices.push(extraPrice);
     });
+
+    extras.prop('checked', false);
+
     return selectedExtraPrices;
 }
-
-
-

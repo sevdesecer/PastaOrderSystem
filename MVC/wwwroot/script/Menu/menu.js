@@ -5,7 +5,7 @@
         button.addEventListener('click', function () {
             var extras = this.nextElementSibling;
             if (extras.style.display === 'none' || extras.style.display === '') {
-                extras.style.display = 'block'; 
+                extras.style.display = 'block';
             } else {
                 extras.style.display = 'none';
             }

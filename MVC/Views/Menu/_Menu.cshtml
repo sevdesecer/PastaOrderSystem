@@ -11,14 +11,14 @@
 
     @foreach (var pasta in Model.Pastas)
     {
-        <div class="menu-card">
+        <div id="@pasta.Id" class="menu-card">
             <a href="@pasta.ImagePath">
                 <img src="@pasta.ImagePath" />
             </a>
             <h2>@pasta.Name</h2>
             <p>@pasta.Description</p>
             <p class="price">@pasta.Price</p>
-            <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price', getSelectedExtraIngredientPrices())">Add to cart</button>
+            <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price')">Add to cart</button>
             <button class="btn btn-primary show">Show extra tastes</button>
 
             <div class="extras" style=" display: none;">

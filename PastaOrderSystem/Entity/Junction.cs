@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Entity
@@ -25,9 +24,9 @@ namespace WebApi.Entity
 
         // Navigation properties
         public Pasta? Pasta { get; set; }
+
         public Beverage? Beverage { get; set; }
         public Order? Order { get; set; }
         public ExtraIngredient? ExtraIngredient { get; set; }
     }
-
 }

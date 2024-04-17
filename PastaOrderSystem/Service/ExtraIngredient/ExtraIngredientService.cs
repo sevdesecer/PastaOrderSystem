@@ -2,7 +2,6 @@
 using WebApi.Context;
 using WebApi.DTO;
 using WebApi.Service.Base;
-using WebApi.Service.Order;
 
 namespace WebApi.Service.ExtraIngredient
 {

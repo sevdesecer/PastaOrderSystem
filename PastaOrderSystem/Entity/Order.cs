@@ -8,11 +8,10 @@ namespace WebApi.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-        public required string CustomerName { get; set; }
-        public required string CustomerAddress { get; set; }
+
+        public string CustomerName { get; set; }
+        public string CustomerAddress { get; set; }
         public int TotalPrice { get; set; }
         public DateTime DateTime { get; set; }
-
-        
     }
 }

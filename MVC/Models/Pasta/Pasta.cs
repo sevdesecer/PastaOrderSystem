@@ -8,7 +8,6 @@
         public int Price { get; set; }
         public List<ExtraIngredient.ExtraIngredient>? ExtraIngredients { get; set; }
         public int Number { get; set; }
-        public required string ImagePath { get; set; }
-
+        public string ImagePath { get; set; }
     }
 }
