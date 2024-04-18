@@ -18,9 +18,17 @@
             <h2>@pasta.Name</h2>
             <p>@pasta.Description</p>
             <p class="price">@pasta.Price</p>
-            <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price')">Add to cart</button>
-            <button class="btn btn-primary show">Show extra tastes</button>
-
+            <div class="buttons">
+                <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price')">Add to cart</button>
+                <button class="btn btn-primary show">Show extra tastes</button>
+                <select name="pieces" id="pieces">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
             <div class="extras" style=" display: none;">
                 @foreach (var extraIngredient in Model.ExtraIngredients)
                 {
@@ -32,7 +40,6 @@
             </div>
         </div>
     }
-
     @foreach (var beverage in Model.Beverages)
     {
         <div class="menu-card">
@@ -42,8 +49,16 @@
             <h2>@beverage.Name</h2>
             <p>@beverage.Description</p>
             <p class="price">@beverage.Price</p>
-            <button class="btn btn-primary add-to-cart" onclick="addToCart('@beverage.Id', '@beverage.Name', '@beverage.Price')">Add to cart</button>
+            <div class="button">
+                <button class="btn btn-primary add-to-cart" onclick="addToCart('@beverage.Id', '@beverage.Name', '@beverage.Price')">Add to cart</button>
+                <select name="pieces" id="pieces">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
         </div>
     }
-
 </div>

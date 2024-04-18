@@ -12,8 +12,22 @@ body {
     text-align: center;
 }
 
+    .text-center .buttons {
+        display: flex
+    }
+    .text-center .buttons select {
+        margin-left: 14em
+    }
+
+    .text-center .button {
+        display: flex
+    }
+
+        .text-center .button select {
+            margin-left: 24em
+        }
+
 .menu-card {
-    display: inline-block;
     margin: 1em 0.75em 0em 0.75em;
     padding: 1.25em;
     border: 0.0625em solid #6DA5C0;
