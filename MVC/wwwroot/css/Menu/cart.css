@@ -21,7 +21,7 @@ body {
     background-color: #fff;
     text-align: left;
     width: 18.75em;
-    cursor: pointer;
+    cursor: pointer; /** mouse shape  */
 }
 
     .card:hover {
@@ -44,6 +44,7 @@ body {
         font-size: 1em;
         margin: 0.3125em 0;
         color: #888;
+
     }
 
 .cart-container {
@@ -75,6 +76,9 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 1.25em;
+    position: sticky;
+    bottom: 0;
+    align-content: center;
 }
 
 .total-price p {
@@ -102,3 +106,27 @@ body {
     .checkout-btn:hover {
         opacity: 1;
     }
+
+.cart-items {
+    max-height: 86%;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.625em;
+    padding: 0.625em 1.25em;
+    border: 0.0625em solid #ddd;
+    border-radius: 0.3125em;
+    background-color: #fff;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.checkout-saving-remove-button {
+    display: flex;
+}

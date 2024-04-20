@@ -7,15 +7,14 @@
     });
 
     var productHtml = `
-        <div class="cart-item">
-            <div>
-                <p>${productName} ${totalPrice.toFixed(2)}$</p>
-            </div>
-        </div>
-    `;
+    <div class="cart-item">
+      <div class="cart-item-info"> <p>${productName} ${totalPrice.toFixed(2)}$</p>
+      </div>
+      <button aria-label="remove product from cart" class="checkout-saving-remove-button">Remove</button>
+    </div>
+   `;
 
     console.log("Product HTML:", productHtml);
-
     cartItemsContainer.append(productHtml);
     updateTotalPrice(totalPrice);
 }
@@ -48,3 +47,8 @@ function getSelectedExtraIngredientPrices(productId) {
 
     return selectedExtraPrices;
 }
+
+$('.show').click(function () {
+    $(this).parent().siblings('.extras').slideToggle();
+});
+    
