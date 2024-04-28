@@ -18,7 +18,7 @@
             <p>@pasta.Description</p>
             <p class="price">@pasta.Price</p>
             <div class="buttons">
-                <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price')">Add to cart</button>
+                <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price', 'pasta')">Add to cart</button>
                 <button class="btn btn-primary show" onclick="toggleExtras('@pasta.Id')">Show extra tastes</button>
                 <select name="pieces" id="pieces" style="display:block">
                     <option value="1">1</option>
@@ -49,7 +49,7 @@
             <p>@beverage.Description</p>
             <p class="price">@beverage.Price</p>
             <div class="button">
-                <button class="btn btn-primary add-to-cart" onclick="addToCart('@beverage.Id', '@beverage.Name', '@beverage.Price')">Add to cart</button>
+                <button class="btn btn-primary add-to-cart" onclick="addToCart('@beverage.Id', '@beverage.Name', '@beverage.Price', 'beverage')">Add to cart</button>
                 <select name="pieces" id="pieces">
                     <option value="1">1</option>
                     <option value="2">2</option>

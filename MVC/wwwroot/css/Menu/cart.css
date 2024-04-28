@@ -121,6 +121,7 @@ body {
     border: 0.0625em solid #ddd;
     border-radius: 0.3125em;
     background-color: #fff;
+    border-color: #6DA5C0;
 }
 
 .cart-item-info {
