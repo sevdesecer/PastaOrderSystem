@@ -3,7 +3,6 @@
 }
 @model MVC.Models.Menu.MenuViewModel;
 <link rel="stylesheet" href="css/Menu/menu.css">
-<script src="script/Menu/menu.js"></script>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/menu.js"></script>
 
@@ -20,8 +19,8 @@
             <p class="price">@pasta.Price</p>
             <div class="buttons">
                 <button class="btn btn-primary add-to-cart" onclick="addToCart('@pasta.Id', '@pasta.Name', '@pasta.Price')">Add to cart</button>
-                <button class="btn btn-primary show">Show extra tastes</button>
-                <select name="pieces" id="pieces">
+                <button class="btn btn-primary show" onclick="toggleExtras('@pasta.Id')">Show extra tastes</button>
+                <select name="pieces" id="pieces" style="display:block">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -42,7 +41,7 @@
     }
     @foreach (var beverage in Model.Beverages)
     {
-        <div class="menu-card">
+        <div class="menu-card" id="@beverage.Id">
             <a href="@beverage.ImagePath">
                 <img src="@beverage.ImagePath" />
             </a>

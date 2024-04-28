@@ -1,37 +1,35 @@
-﻿function addToCart(productId, productName, productPrice) {
-    var cartItemsContainer = $('.cart-items');
+﻿let totalPrice = 0;
+let cartItemCounter = 0; 
 
-    var totalPrice = parseFloat(productPrice);
+function addToCart(productId, productName, productPrice) {
+    const cartItemsContainer = $('.cart-items');
+
+    const pieces = $('#' + productId + ' #pieces').val();
+    let selectedPrice = parseFloat(productPrice) * pieces;
     getSelectedExtraIngredientPrices(productId).forEach(function (extraPrice) {
-        totalPrice += parseFloat(extraPrice);
+        selectedPrice += parseFloat(extraPrice) * pieces;
     });
 
-    var productHtml = `
-    <div class="cart-item">
-      <div class="cart-item-info"> <p>${productName} ${totalPrice.toFixed(2)}$</p>
+    totalPrice += selectedPrice;
+
+    const cartItemId = 'cart-item-' + cartItemCounter++;
+    const productHtml = `
+    <div id="${cartItemId}" class="cart-item">
+      <div class="cart-item-info"> <p>${productName} ${selectedPrice.toFixed(2)}$</p>
       </div>
-      <button aria-label="remove product from cart" class="checkout-saving-remove-button">Remove</button>
+      <button class="checkout-saving-remove-button" onclick="removeFromCart('${cartItemId}', ${selectedPrice.toFixed(2)})">Remove</button>
     </div>
    `;
 
     console.log("Product HTML:", productHtml);
     cartItemsContainer.append(productHtml);
-    updateTotalPrice(totalPrice);
+    $('#totalPriceElement').text(totalPrice.toFixed(2));
 }
 
-function updateTotalPrice(price) {
-    var totalPriceElement = $('.total-price span');
-
-    var currentTotal = parseFloat(totalPriceElement.text());
-
-    console.log("Current Total Price:", currentTotal);
-
-    var newTotal = currentTotal + parseFloat(price);
-    totalPriceElement.text(newTotal.toFixed(2) + '$');
-
-    console.log("New Total Price:", newTotal);
-
-    $('.checkout-btn').prop('disabled', false);
+function removeFromCart(cartItemId, itemPrice) {
+    $('#' + cartItemId).remove();
+    totalPrice -= itemPrice;
+    $('#totalPriceElement').text(totalPrice.toFixed(2));
 }
 
 function getSelectedExtraIngredientPrices(productId) {
@@ -48,7 +46,7 @@ function getSelectedExtraIngredientPrices(productId) {
     return selectedExtraPrices;
 }
 
-$('.show').click(function () {
-    $(this).parent().siblings('.extras').slideToggle();
-});
-    
+function toggleExtras(pastaId) {
+    var extrasDiv = document.getElementById(pastaId).querySelector('.extras');
+    extrasDiv.style.display = (extrasDiv.style.display === 'block') ? 'none' : 'block';
+}
