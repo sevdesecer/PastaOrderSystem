@@ -18,8 +18,45 @@
                 Total Price: <span id="totalPriceElement"></span>
             </p>
         </div>
-        <div>
-            <button class="checkout-btn" disabled>Confirm Cart</button>
+            <section class="bg-light">
+                <div class="text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 text-center">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">
+                                Confirm
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+</div>
+
+    <div class="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="modal-title">Confirm the Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="modal-name" class="form-label">Your Name:</label>
+                    <input type="text" class="form-control" id="modal-name" placeholder="e.g. Mauro">
+                    
+                    <label for="modal-address" class="form-label">Your Address:</label>
+                    <input type="text" class="form-control" id="modal-address" placeholder="e.g. 123 Main St">
+
+                    <label for="modal-email" class="form-label">Your Email Address:</label>
+                    <input type="email" class="form-control" id="modal-email" placeholder="e.g. mauro@example.com">
+
+                    <label for="modal-cart-number" class="form-label">Cart Number:</label>
+                    <input type="text" class="form-control" id="modal-cart-number" placeholder="e.g. 123456789">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Pay</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+
