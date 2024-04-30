@@ -8,7 +8,6 @@ let order = {
     CustomerAddress: undefined
 };
 
-
 function addToCart(productId, productName, productPrice, productType) {
     const cartItemsContainer = $('.cart-items');
 
@@ -86,7 +85,7 @@ function getSelectedExtraIngredientPrices(productId, pastaNumber) {
         const cleanExtraId = extraId.replace('extra_', '');
         order.Pastas.forEach(function (pasta) {
             if (pasta.Id === productId && pasta.PastaNumber === pastaNumber) {
-                pasta.ExtraIngredients.push(cleanExtraId);
+                pasta.ExtraIngredients.push({ Id: cleanExtraId });
             }
         });
     });
@@ -100,3 +99,29 @@ function toggleExtras(pastaId) {
     var extrasDiv = document.getElementById(pastaId).querySelector('.extras');
     extrasDiv.style.display = (extrasDiv.style.display === 'block') ? 'none' : 'block';
 }
+
+function sendOrderToController() {
+
+    order.CustomerName = $('#modal-name').val().trim();
+    order.CustomerAddress = $('#modal-address').val().trim();
+    order.Pastas.forEach(p => delete p.PastaNumber);
+
+
+    fetch('/Order/Create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('Order sent successfully');
+        })
+        .catch(error => {
+            console.error('There was a problem with the order:', error.message);
+        });
+}
+

@@ -50,7 +50,7 @@
             <p class="price">@beverage.Price</p>
             <div class="button">
                 <button class="btn btn-primary add-to-cart" onclick="addToCart('@beverage.Id', '@beverage.Name', '@beverage.Price', 'beverage')">Add to cart</button>
-                <select name="pieces" id="pieces">
+                <select name="pieces" id="pieces" style="display:none">
                     <option value="1">1</option>
                 </select>
             </div>

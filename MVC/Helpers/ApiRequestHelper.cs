@@ -52,5 +52,20 @@ namespace MVC.Helpers
 
             throw new Exception("API request failed");
         }
+
+        public async Task<System.Net.HttpStatusCode> PostAsync(string endpoint, object data)
+        {
+            var bodyJson = JsonSerializer.Serialize(data);
+            var stringContent = new StringContent(bodyJson, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PostAsync(endpoint, stringContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception($"API request failed with status code {response.StatusCode}: {errorMessage}");
+            }
+            return response.StatusCode;
+        }
     }
 }

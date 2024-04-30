@@ -7,6 +7,6 @@
         public int TotalPrice { get; set; }
         public DateTime DateTime { get; set; }
         public List<Pasta.Pasta>? Pastas { get; set; }
-        public List<Beverage.Beverage>? Beverage { get; set; }
+        public List<Beverage.Beverage>? Beverages { get; set; }
     }
 }

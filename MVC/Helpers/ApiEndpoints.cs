@@ -2,15 +2,18 @@
 {
     public static class ApiEndpoints
     {
-        public const string BaseEndpoint = "https://localhost:44360/";
-
-        public const string PastaEndpoint = BaseEndpoint + "Pasta/";
+        private const string BaseEndpoint = "https://localhost:44360/";
+        
+        private const string PastaEndpoint = BaseEndpoint + "Pasta/";
         public const string PastaGetAllEndpoint = PastaEndpoint + "getAll/";
 
-        public const string BeverageEndpoint = BaseEndpoint + "Beverage/";
+        private const string BeverageEndpoint = BaseEndpoint + "Beverage/";
         public const string BeverageGetAllEndpoint = BeverageEndpoint + "getAll/";
 
-        public const string ExtraIngredientEndpoint = BaseEndpoint + "ExtraIngredient/";
+        private const string ExtraIngredientEndpoint = BaseEndpoint + "ExtraIngredient/";
         public const string ExtraIngredientGetAllEndpoint = ExtraIngredientEndpoint + "getAll/";
+
+        private const string OrderEndpoint = BaseEndpoint + "Order/";
+        public const string OrderAddEndpoint = OrderEndpoint + "add/";
     }
 }

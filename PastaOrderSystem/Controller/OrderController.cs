@@ -48,7 +48,7 @@ namespace WebApi.Controller
         public ActionResult Add(OrderDto order)
         {
             _service.AddJunction(order);
-            return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
+            return Ok();
         }
 
         [HttpPut("update")]
